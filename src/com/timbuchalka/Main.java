@@ -6,11 +6,11 @@ public class Main {
 //    private static final ONE_KILO=1;
 
     public static void main(String[] args) {
-        canPack(1, 0, 4);
-        canPack(1, 0, 5);
-        canPack(0, 5, 4);
-        canPack(2, 2, 12);
-        canPack(-3, 2, 12);
+//        canPack(1, 0, 4);
+//        canPack(1, 0, 5);
+//        canPack(0, 5, 4);
+//        canPack(2, 2, 12);
+//        canPack(-3, 2, 12);
     }
 
     public static boolean canPack(int bigCount, int smallCount, int goal) {
@@ -25,15 +25,16 @@ public class Main {
         // goal is the capacity of the bag
 //        bigCount *= 5;
 //        smallCount *= 1;
-
         if (bigCount < 0 || smallCount < 0 || goal < 0) {
             return false;
         }
+        int total = 0;
 
-        //if (bigCount);
-        return true;
+        if (goal <= total) {
+            return true;
+        }
+        return false;
     }
-
 
 }
 /*
