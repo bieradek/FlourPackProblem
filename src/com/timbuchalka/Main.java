@@ -1,16 +1,16 @@
 package com.timbuchalka;
 
 public class Main {
-
-//    private static final FIVE_KILOS=5;
-//    private static final ONE_KILO=1;
-
     public static void main(String[] args) {
-//        canPack(1, 0, 4);
-//        canPack(1, 0, 5);
-//        canPack(0, 5, 4);
-//        canPack(2, 2, 12);
-//        canPack(-3, 2, 12);
+        System.out.println(canPack(6, 0, 29));     //false
+        //if goal % 5 != 0
+        System.out.println(canPack(5, 4, 29));     //true
+        System.out.println(canPack(5, 5, 29));     //true
+
+        System.out.println(canPack(5, 3, 29));     //false
+        System.out.println(canPack(0, 5, 4));     //true
+        System.out.println(canPack(0, 5, 4));     //true
+        System.out.println(canPack(4, 25, 43));
     }
 
     public static boolean canPack(int bigCount, int smallCount, int goal) {
@@ -22,26 +22,33 @@ public class Main {
         //if the sum is greater than goal, ensure that only full bags are used towards the goal amount.
         //For example if goal=9, bigCount = 2, smallCount = 0
 
-        // goal is the capacity of the bag
-//        bigCount *= 5;
-//        smallCount *= 1;
         if (bigCount < 0 || smallCount < 0 || goal < 0) {
             return false;
         }
-        int total = 0;
+        int goalDivision = goal / 5; // 29/5 = 5
+        int remainderExtract = goal % 5; //29%5 = 4
+        int total = bigCount * 5 + smallCount;
 
-        if (goal <= total) {
+        if (total >= goal) {
+            if (goalDivision > remainderExtract) {
+                return false;
+            }
             return true;
         }
         return false;
     }
 
-}
-/*
-1,0,4
-1,0,5
-0,5,4
-2,2,12
--3,2,12
+    //what makes it possible to pack? the fact that you can have
+    //28/6 = 4 and 4/6
+    //6*5+2=32
 
- */
+    //goal 28: at least 5 big 3 small but 5 big and 4 small is also ok however 6 big/0 small is not ok, but 6 big and 3 small is ok
+    //goal 59 at least 11 big and 4 small
+    /*
+    initial check: is it even enough?
+    big count * 5 + small count = ?
+    20 + 25 = 45 > 43 <--so far so good
+    45 % 43 = 2 <--
+    40 + 5 = 43
+     */
+}
